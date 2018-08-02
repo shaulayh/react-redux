@@ -19,5 +19,4 @@ render(
     document.getElementById('root')
 );
 
-// ReactDOM.render(AppContainer, document.getElementById('root'));
 registerServiceWorker();

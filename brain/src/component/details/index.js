@@ -30,6 +30,7 @@ class Details extends Component {
     render() {
         return (
             <form onSubmit={this.props.handleSubmit}>
+                <h1>{this.props.message}</h1>
                 <div className="form-group row">
                     <label htmlFor="firstName" className="col-sm-2 col-form-label">First Name</label>
                     <Field

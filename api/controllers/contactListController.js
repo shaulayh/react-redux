@@ -20,7 +20,6 @@ exports.create_all_contact = function (req, res) {
         if (err) {
             res.send(err);
             res.json({message: 'show error'});
-            console.log(res.send(err));
         }
         res.json(contact);
     })
