@@ -66,11 +66,18 @@ class Details extends Component {
                         component={renderField}
                         type="date" className="col-sm-10 input-sm"/>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <div className="button-group">
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button disabled={this.props.pristine || this.props.submitting}
+                            onClick={this.props.reset}
+                            type="button"
+                            className="btn btn-danger">Clear
+                    </button>
+                </div>
+
             </form>
         );
     }
-
 }
 
 Details = reduxForm({
