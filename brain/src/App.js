@@ -3,13 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import Details from './component/details';
 import axios from 'axios';
-import {submitForm} from "./actions";
+import {reset} from 'redux-form';
 
-import {connect} from 'react-redux';
+
 
 class App extends Component {
 
-    submit = (values) => {
+    submit = (values, dispatch) => {
         axios.put('/api/contacts', {
             firstName: values.firstName,
             lastName: values.lastName,
@@ -17,12 +17,13 @@ class App extends Component {
             date: values.date
         })
             .then(function (response) {
+                console.log(response);
             })
             .catch(function (error) {
 
             });
+        dispatch(reset('detail'));
     };
-
 
     render() {
         return (
@@ -36,10 +37,9 @@ class App extends Component {
                              onSubmit={this.submit}
                     />
                 </div>
-
             </div>
         );
     }
 }
 
-export default connect(null, {submitForm})(App);
+export default App;

@@ -4,16 +4,22 @@ import './index.css';
 import {Field, reduxForm} from 'redux-form'
 
 const required = value => value ? undefined : 'Required';
+
 const maxLength = max => value =>
     value && value.length > max ? `Must be ${max} characters or less` : undefined;
 const maxLength15 = maxLength(15);
 
+export const minLength = min => value =>
+    value && value.length < min ? `Must be ${min} characters or more` : undefined
+export const minLength2 = minLength(2);
+
 const email = value =>
     value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ?
         'Invalid email address' : undefined;
+
 const aol = value =>
     value && /.+@aol\.com/.test(value) ?
-        'email contains aol' : undefined
+        'email contains aol' : undefined;
 
 const renderField = (field) => (
     <div className="input-row">
@@ -34,7 +40,7 @@ class Details extends Component {
                 <div className="form-group row">
                     <label htmlFor="firstName" className="col-sm-2 col-form-label">First Name</label>
                     <Field
-                        validate={[required, maxLength15]}
+                        validate={[required,minLength2]}
                         name="firstName"
                         component={renderField}
                         type="text" className="col-sm-10 input-sm"/>
@@ -67,7 +73,10 @@ class Details extends Component {
                         type="date" className="col-sm-10 input-sm"/>
                 </div>
                 <div className="button-group">
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button
+                        disabled={this.props.invalid}
+                        type="submit" className="btn btn-primary">Submit
+                    </button>
                     <button disabled={this.props.pristine || this.props.submitting}
                             onClick={this.props.reset}
                             type="button"
