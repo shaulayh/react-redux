@@ -40,7 +40,7 @@ class Details extends Component {
                 <div className="form-group row">
                     <label htmlFor="firstName" className="col-sm-2 col-form-label">First Name</label>
                     <Field
-                        validate={[required,minLength2]}
+                        validate={[required, minLength2]}
                         name="firstName"
                         component={renderField}
                         type="text" className="col-sm-10 input-sm"/>
