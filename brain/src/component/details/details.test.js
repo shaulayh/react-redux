@@ -5,8 +5,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 configure({adapter: new Adapter()});
 
-import {shallow, render} from 'enzyme'
-
+import {shallow} from 'enzyme'
 
 
 describe('Details shown', () => {
@@ -21,22 +20,6 @@ describe('Details shown', () => {
         );
         expect(wrapper.prop('message')).toEqual('Form builder');
     });
-
-    it('calls correct function to save the information', () => {
-        const onButtonClickMock = jest.fn();
-        const wrapper = shallow(
-            <Details
-                onSubmit={onButtonClickMock}
-            />,
-        );
-
-        const buttonMock = wrapper.contains('[type="submit"]'); // step 1 above
-
-
-        // expect(onButtonClickMock).toHaveBeenCalledTimes(1); // step 3
-        // expect(onButtonClickMock).toHaveBeenCalledWith(true);
-    });
-
 });
 
 
